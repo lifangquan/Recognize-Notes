@@ -5,8 +5,11 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <HorizontalScrollView
+        android:id="@+id/main_keyborad_scroll"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:id="@+id/main_keyborad"
@@ -14,7 +17,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" />
     </HorizontalScrollView>
-<com.love_li2.recognizenotes.view.PainoKeyboard
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/main_small_keyborad"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@id/main_keyborad_scroll"
+        android:scaleType="fitXY"
+        android:src="@drawable/keys_small" />
+
+    <RelativeLayout
+        android:id="@+id/main_notes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_small_keyborad" >
+    </RelativeLayout>
+
 </RelativeLayout>
