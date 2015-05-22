@@ -16,9 +16,10 @@ import android.widget.Toast;
 public class PainoKeyboard extends LinearLayout implements OnClickListener {
 	String TAG = "PainoKeyboard";
 	
-	private int keyWidth = 0,keyHeight = 0,keyNums = 16;
+	private int whiteKeyWidth = 0,blackeyWidth = 0, keyHeight = 0,keyNums = 16;
 	Button[] whiteKeys = new Button[7];
 	Button[] blackKeys = new Button[5];
+	int beginIndex = 0,endIndex = 6;
 	
 	public PainoKeyboard(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -41,8 +42,9 @@ public class PainoKeyboard extends LinearLayout implements OnClickListener {
                 .getSystemService(Context.WINDOW_SERVICE);
 		Point outSize = new Point();
 		wm.getDefaultDisplay().getSize(outSize );
-		keyWidth = outSize.x / keyNums;
-		keyHeight = keyWidth * 5;
+		whiteKeyWidth = outSize.x / keyNums;
+		blackeyWidth = whiteKeyWidth * 5 / 7;
+		keyHeight = whiteKeyWidth * 5;
 		
 		for(int i =0 ;i < 7 ; i++)
 		{
@@ -67,27 +69,29 @@ public class PainoKeyboard extends LinearLayout implements OnClickListener {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		// TODO Auto-generated method stub
-		setMeasuredDimension(keyWidth * 7, keyHeight);
+		setMeasuredDimension(whiteKeyWidth * (endIndex - beginIndex + 1), keyHeight);
 	}
 	
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		// TODO Auto-generated method stub
-		for(int i =0 ;i < 7 ; i++)
+		for(int i = 0 ;i < 7 ; i++)
 		{
-			whiteKeys[i].layout(i*keyWidth, 0, (i+1) * keyWidth, keyHeight);
+			whiteKeys[i].layout((i-beginIndex)*whiteKeyWidth, 0, (i-beginIndex+1) * whiteKeyWidth, keyHeight);
 		}
-		blackKeys[0].layout((int)(keyWidth * 0.5), 0, (int)(keyWidth * (0.5 + 5.0/7)), keyHeight/3*2);
-		blackKeys[1].layout((int)(keyWidth * (1 + 5.0/7)), 0, (int)(keyWidth * (1 + 5.0/7 + 5.0/7)), keyHeight/3*2);
-		blackKeys[2].layout((int)(keyWidth * 3.5), 0, (int)(keyWidth * 4.2), keyHeight/3*2);
-		blackKeys[3].layout((int)(keyWidth * 4.5), 0, (int)(keyWidth * 5.2), keyHeight/3*2);
-		blackKeys[4].layout((int)(keyWidth * 5.5), 0, (int)(keyWidth * 6.2), keyHeight/3*2);
+		blackKeys[0].layout((int)(whiteKeyWidth * (0.5-beginIndex)), 0, (int)(whiteKeyWidth * (0.5 - beginIndex)) + blackeyWidth, keyHeight/3*2);
+		blackKeys[1].layout((int)(whiteKeyWidth * (1 + 5.0/7)), 0, (int)(whiteKeyWidth * (1 + 5.0/7 + 5.0/7)), keyHeight/3*2);
+		blackKeys[2].layout((int)(whiteKeyWidth * 3.5), 0, (int)(whiteKeyWidth * 4.2), keyHeight/3*2);
+		blackKeys[3].layout((int)(whiteKeyWidth * 4.5), 0, (int)(whiteKeyWidth * 5.2), keyHeight/3*2);
+		blackKeys[4].layout((int)(whiteKeyWidth * 5.5), 0, (int)(whiteKeyWidth * 6.2), keyHeight/3*2);
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		Toast.makeText(getContext(), ""+v.getId(), 0).show();
 	}
 	
+	private class NullKeyboardException extends Exception{
+		
+	}
 }

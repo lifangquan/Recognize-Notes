@@ -4,8 +4,17 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <com.love_li2.recognizenotes.view.PainoKeyboard
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/main_keyborad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+<com.love_li2.recognizenotes.view.PainoKeyboard
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 </RelativeLayout>
