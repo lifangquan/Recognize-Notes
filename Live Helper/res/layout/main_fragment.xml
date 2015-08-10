@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RadioGroup
+        android:id="@+id/main_menu_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#7f7f7f"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/main_menu_talk"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:gravity="center"
+            android:text="聊天"
+            android:textColor="@drawable/main_menu_color_selector" />
+
+        <RadioButton
+            android:id="@+id/main_menu_mycommunity"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:gravity="center"
+            android:text="我的社区"
+            android:textColor="@drawable/main_menu_color_selector" />
+
+        <RadioButton
+            android:id="@+id/main_menu_community"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:gravity="center"
+            android:text="社区"
+            android:textColor="@drawable/main_menu_color_selector" />
+
+        <RadioButton
+            android:id="@+id/main_menu_me"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:gravity="center"
+            android:text="我"
+            android:textColor="@drawable/main_menu_color_selector" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/talk_contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_menu_bar"
+        android:background="#ff0" />
+
+    <RelativeLayout
+        android:id="@+id/mycommunity_contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_menu_bar"
+        android:background="#f00" />
+
+    <RelativeLayout
+        android:id="@+id/community_contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_menu_bar"
+        android:background="#0f0" />
+
+    <RelativeLayout
+        android:id="@+id/me_contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_menu_bar"
+        android:background="#00f" />
+
+</RelativeLayout>
